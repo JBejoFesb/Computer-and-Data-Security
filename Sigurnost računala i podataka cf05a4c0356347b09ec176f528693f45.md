@@ -74,3 +74,158 @@ Naredbom tcpdump kreće praćenje prometa žrtvi.
 
 AR Protokol, odnosnje njegove slabosti mogu se koristiti i za napad na dostupnost korisnikovih podataka. 
 Denial of service ili reduction of service napadi izvode se gušenjem prometa jedne od žrtviju floodanjem te žrtve sa arp replayevima.
+
+# **Lab 2: Symmetric key cryptography - a crypto challenge**
+
+U sklopu 2. vježbe proučavali smo proces kriptiranja i dekriptiranja u uvjetima enkripcije sa simetričnim ključem.
+
+Kao glavni alat smo koristili [Fernet](https://cryptography.io/en/latest/fernet/).
+
+Fernet koristi navedene kriptografske mehanizme manje kompleksije:
+
+- AES šifru sa 128 bitnim ključem
+- CBC enkripcijski način rada
+- HMAC sa 256 bitnim ključem za zaštitu integriteta poruka
+- Timestamp za osiguravanje svježine (*freshness*) poruka
+
+Vježbi je dodan izazov dekripcije u kojemu je ime datoteke ključ, a datoteka sadrži ciphertext koji se dekripcijom pretvara u png koji čestita korisniku.
+
+Ispravan ključ za dekripciju pronalazimo brute-force napadamo te koristimo aplikaciju koja radi na jednoj jezgri ili na više njih.
+
+Rad jezgri može se provjeriti preko task managera, gdje smo pri kraju vježbe utvrdili ispravnost koda i njegovo korištenje resursa (laptop u laboratoriju sadrži i5 7500u čiji je thread bio na 50% iskorištenosti pri rješavanju 20-bitne entropije).
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%203.png)
+
+Program korišten za napad zasniva se na python jeziku i beskonačnom while loop-u koji uspoređuje dekriptirani plaintext sa zaglavljem datoteke u kojoj se nalaze informacije o samoj datoteci kao njezin tip (u ovom slučaju png).
+
+**Pokretanje python virtualke**
+
+```bash
+python -m venv jbejo
+```
+
+**Instalacija i importanje Ferneta**
+
+```bash
+pip install cryptography
+from cryptography.fernet import Fernet
+```
+
+**Kod za generiranje hasha baziran na našem imenu**
+
+```bash
+from cryptography.hazmat.primitives import hashes
+
+def hash(input):
+    if not isinstance(input, bytes):
+        input = input.encode()
+
+    digest = hashes.Hash(hashes.SHA256())
+    digest.update(input)
+    hash = digest.finalize()
+
+    return hash.hex()
+
+if __name__=="__main__":
+    h = hash('bejo_jakov')
+    print(h)
+```
+
+Hash je 256 bitni jer koristimo Secure Hash Algorithm 256 za njegovo generiranje.
+
+**Nedovršeni kod za brute-force napad na 20-bitnu entropiju**
+
+```python
+import base64
+from cryptography.fernet import Fernet
+
+def brute_force():
+				ctr = 0
+
+				filename = "ime datoteke"
+				    with open(filename, "rb") as file:
+				        ciphertext = file.read()
+				
+				while True:
+				    key_bytes = ctr.to_bytes(32, "big")
+				    key = base64.urlsafe_b64encode(key_bytes)
+						
+				    try:
+				         plaintext = Fernet(key).decrypt(ciphertext)
+				         print(key, plaintext)
+				         break
+				
+				    except Exception:
+				          pass
+				
+				    ctr += 1
+
+if __name__=="__main__":
+    brute_force()
+```
+
+Entropija od 20 bita probijena je u približno minutu. Ključ statistički nalazimo na otprilike pola mogućeg keyspace-a. 
+
+Kada bi pokušali entropiju od 22 bita gurati na jednoj jezgri trajalo bi puno duže i stoga koristimo više-jezgreni program.
+
+**Nedovršeni kod za napad na 22-bitnu entropiju**
+
+```python
+from multiprocessing import Pool
+
+def brute_force(filename, chunk_start_index, chunk_size):
+    ctr = 0
+
+    filename = "ime datoteke"
+				    with open(filename, "rb") as file:
+				        ciphertext = file.read()
+				
+				while True:
+				    key_bytes = ctr.to_bytes(32, "big")
+				    key = base64.urlsafe_b64encode(key_bytes)
+						
+				    try:
+				         plaintext = Fernet(key).decrypt(ciphertext)
+				         print(key, plaintext)
+				         break
+				
+				    except Exception:
+				          pass
+				
+				    ctr += 1
+
+def parallelize_attack(filename, key_entropy):
+    # Split the keyspace into equally sized chunks;
+    # the number of chunks corresponds to the number
+    # of CPU cores on your system.
+    total_keys = 2**key_entropy
+    chunk_size = int(total_keys/os.cpu_count())
+
+    with Pool() as pool:
+        def key_found_event(event):
+            print("Terminating the pool ...")
+            pool.terminate()
+
+        # Start parallel workers
+        for chunk_start_index in range(0, total_keys, chunk_size):
+            pool.apply_async(
+                brute_force,
+                (
+                    filename,
+                    chunk_start_index,
+                    chunk_size,
+                ),
+                callback=key_found_event
+            )
+
+        pool.close()
+        pool.join()
+```
+
+**Naredba za pronalazak broja jezgri procesora**
+
+```python
+os.cpu_count
+```
+
+Napad sa više jezgri ćemo izvršiti tako da raspodijelimo keyspace na onoliko dijelova koliko jezgri imamo, i time masivno ubrzamo napad.
