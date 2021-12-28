@@ -680,3 +680,55 @@ if __name__ == "__main__":
 Vidimo iz primjera da korištenjem različitih funkcija imamo različit kompromis između sigurnosti i brzine. 
 
 SHA256 i MD5 mogu generirati vrijednost u već nekoliko desetaka mikrosekundi dok funkcije poput Linux Crypt imaju popričino sporije vrijeme, to se može dodatno usporiti sa iterativnim hashiranjem.
+
+---
+
+# **Lab 5: Online and Offline Password Guessing Attacks**
+
+---
+
+Cilj vježbe bio je napad na virtualku (docker) zaštićen lozinkom. Cilj je probiti autentikaciju
+
+Koristili smo online i offline vrstu napada. Online napad preko danog korisničkog imena i IP adrese pokušava prijavu u sustav koristeći neku od lozinki is odabranog “dictionary-a”.
+
+U offline napadu pokušavamo probiti autentikaciju tako da napadamo lokalno spremljeni hash šifre.
+
+---
+
+U svrhu online napada koristimo Nmap alat za pretraživanje mreža kako bi uspostavili na kojem portu i preko kojeg protokola je uspostavljen Secure Shell sustav. 
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%208.png)
+
+Naravno bez da znamo šifru ne možemo ući u SSH pa s toga koristimo alat Hydra kako bi iz pre-compiled dictionarya pokušali pogodoiti šifru. Ovo je u suštini brute force napad pa više računalne snage daje bolje rezultate.
+
+`# hydra -l <username> -x 4:6:a <your IP address> -V -t 1 ssh`
+
+Parametar -t određuje thredove na kojima će se proces izvoditi, ukoliko za parametar postavimo 4 
+
+Hydra dobija dopuštenje od OS-a da iskoristi 4 niti procesora. Kako je na laptopima u labosu procesor starije klase, očekivano, Hydra gotovo u potpunosti koristi njegove resurse, a pritom koristi i određenu količinu memorije.
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%209.png)
+
+Broj mogućih šifri iz rječnika je ogroman, pa ćak i sa 4 threada ovdje govorimo o dužem vremenu napada. Stoga koristimo manji rječnik u kojemu je namjerno postavljena naša šifra.
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2010.png)
+
+Nakon 15 minuta šifra biva pronađena i možemo se uspješno ulogirati u SSH.
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2011.png)
+
+---
+
+Offline napad izvodimo korištenjem offline dictionarya i alata HashCat koji na temelju lokalno spremljenih hasheva radi usporedbe i time “crackira šifru”.
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2012.png)
+
+Ovisno o entropiji hash se može naći na svega nekoliko posto kao kod kolegice Bartulović, ali može i potrajati. Prosječno vrijeme je 50%, a u mom slučaju HashCat je prošao oko 40% dictionarya.
+
+Aplikacija nas uredno obavijesti da je lozinka cracked te je možemo testirati.
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2013.png)
+
+U ovom slučaju lozinka je jednaka kao kod online napada te pri upisu u SSH uredno prolazi autentikaciju. Napadač sada može pristupiti SSH sustavu. 
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2014.png)
