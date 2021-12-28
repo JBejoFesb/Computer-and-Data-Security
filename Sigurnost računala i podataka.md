@@ -14,7 +14,7 @@ Napadač se konstantnim slanjem ARP replayeva predstavlja IP-em druge žrtve te 
 Preusmjerivač ne zna kome pripada prava adresa te raspoznaje korisnike samo preko MAC adresi.
 Tako napadač makar ima IP adresu druge žrtve i dalje prima podatke preko svoje MAC adrese.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled.png)
 
 Nakon početnog preuzimanja kontenjera koristeći assete sa profesorovog github repositorija-a započinjemo vježbu lansiranjem 3 kontenjera i namještanjem njihovih konfiguracija.
 
