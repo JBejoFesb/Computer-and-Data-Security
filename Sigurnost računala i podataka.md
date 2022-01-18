@@ -14,7 +14,7 @@ Napadač se konstantnim slanjem ARP replayeva predstavlja IP-em druge žrtve te 
 Preusmjerivač ne zna kome pripada prava adresa te raspoznaje korisnike samo preko MAC adresi.
 Tako napadač makar ima IP adresu druge žrtve i dalje prima podatke preko svoje MAC adrese.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled.png)
 
 Nakon početnog preuzimanja kontenjera koristeći assete sa profesorovog github repositorija-a započinjemo vježbu lansiranjem 3 kontenjera i namještanjem njihovih konfiguracija.
 
@@ -45,7 +45,7 @@ docker exec -it evil-station bash
 
 Spajanje dvije žrtve preko netcat servisa i test slanja u oba smjera:
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%201.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%201.png)
 
 ```c
 Korištene su naredbe:
@@ -70,7 +70,7 @@ arpspoof -t station-1 station-2
 
 Naredbom tcpdump kreće praćenje prometa žrtvi.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%202.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%202.png)
 
 AR Protokol, odnosnje njegove slabosti mogu se koristiti i za napad na dostupnost korisnikovih podataka. 
 Denial of service ili reduction of service napadi izvode se gušenjem prometa jedne od žrtviju floodanjem te žrtve sa arp replayevima.
@@ -94,7 +94,7 @@ Ispravan ključ za dekripciju pronalazimo brute-force napadamo te koristimo apli
 
 Rad jezgri može se provjeriti preko task managera, gdje smo pri kraju vježbe utvrdili ispravnost koda i njegovo korištenje resursa (laptop u laboratoriju sadrži i5 7500u čiji je thread bio na 50% iskorištenosti pri rješavanju 20-bitne entropije).
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%203.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%203.png)
 
 Program korišten za napad zasniva se na python jeziku i beskonačnom while loop-u koji uspoređuje dekriptirani plaintext sa zaglavljem datoteke u kojoj se nalaze informacije o samoj datoteci kao njezin tip (u ovom slučaju png).
 
@@ -192,7 +192,7 @@ if __name__ == "__main__":
 
 Entropija od 20 bita probijena je u približno minutu. Ključ statistički nalazimo na otprilike pola mogućeg keyspace-a. 
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%204.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%204.png)
 
 Kada bi pokušali entropiju od 22 bita gurati na jednoj jezgri trajalo bi puno duže i stoga koristimo više-jezgreni program.
 
@@ -286,7 +286,7 @@ if __name__ == "__main__":
 
 **Output u CMD-u**
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%205.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%205.png)
 
 Proces generiranja i provjere ključa može se izvesti i korištenjem textualnih datoteka koje možemo pročitati. U ovom primjeru MAC spremamo u datoteka.sig (signature).
 
@@ -381,7 +381,7 @@ Usporedba se ne smije vršiti na standardni način već se koristi naredba "h.ve
 Na kraju te poruke treba rasporediti po timestampu i dobit ćemo ispravan savjet za kupnju ili prodaju dionica.
 **Primjer .txt i .sig datoteka**
 
-[challenges.zip](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/challenges.zip)
+[challenges.zip](Sigurnost%20rac%CC%8Cunala%20i%20podataka/challenges.zip)
 
 **Kod za challange**
 
@@ -485,7 +485,7 @@ if __name__ == "__main__":
 
 **Rezultat u CMD-u:**
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%206.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%206.png)
 
 # **Lab 4: Password-hashing (iterative hashing, salt, memory-hard functions)**
 
@@ -675,7 +675,7 @@ if __name__ == "__main__":
 
 ```
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%207.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%207.png)
 
 Vidimo iz primjera da korištenjem različitih funkcija imamo različit kompromis između sigurnosti i brzine. 
 
@@ -697,7 +697,7 @@ U offline napadu pokušavamo probiti autentikaciju tako da napadamo lokalno spre
 
 U svrhu online napada koristimo Nmap alat za pretraživanje mreža kako bi uspostavili na kojem portu i preko kojeg protokola je uspostavljen Secure Shell sustav. 
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%208.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%208.png)
 
 Naravno bez da znamo šifru ne možemo ući u SSH pa s toga koristimo alat Hydra kako bi iz pre-compiled dictionarya pokušali pogodoiti šifru. Ovo je u suštini brute force napad pa više računalne snage daje bolje rezultate.
 
@@ -707,31 +707,31 @@ Parametar -t određuje thredove na kojima će se proces izvoditi, ukoliko za par
 
 Hydra dobija dopuštenje od OS-a da iskoristi 4 niti procesora. Kako je na laptopima u labosu procesor starije klase, očekivano, Hydra gotovo u potpunosti koristi njegove resurse, a pritom koristi i određenu količinu memorije.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%209.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%209.png)
 
 Broj mogućih šifri iz rječnika je ogroman, pa ćak i sa 4 threada ovdje govorimo o dužem vremenu napada. Stoga koristimo manji rječnik u kojemu je namjerno postavljena naša šifra.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2010.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2010.png)
 
 Nakon 15 minuta šifra biva pronađena i možemo se uspješno ulogirati u SSH.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2011.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2011.png)
 
 ---
 
 Offline napad izvodimo korištenjem offline dictionarya i alata HashCat koji na temelju lokalno spremljenih hasheva radi usporedbe i time “crackira šifru”.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2012.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2012.png)
 
 Ovisno o entropiji hash se može naći na svega nekoliko posto kao kod kolegice Bartulović, ali može i potrajati. Prosječno vrijeme je 50%, a u mom slučaju HashCat je prošao oko 40% dictionarya.
 
 Aplikacija nas uredno obavijesti da je lozinka cracked te je možemo testirati.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2013.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2013.png)
 
 U ovom slučaju lozinka je jednaka kao kod online napada te pri upisu u SSH uredno prolazi autentikaciju. Napadač sada može pristupiti SSH sustavu. 
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2014.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2014.png)
 
 ---
 
@@ -880,13 +880,13 @@ cat: SRP/security.txt: Permission denied
 
 ```
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2015.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2015.png)
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2016.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2016.png)
 
 Naredbom ***usermod*** dodajemo Boba u grupu Alice, pa on samim time ima jednaka prava.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2017.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2017.png)
 
 ---
 
@@ -924,15 +924,15 @@ Windowsi imaju jako sličan pristup sa svojim administrator i standard user ulog
 
 Prije zadnjeg dijela vježbe Bob-a uklanjamo iz svih grupa i ostaje bez prava i kontrole.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2018.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2018.png)
 
 ---
 
 Posljednji dio vježbe odnosi se na naredbu passwd za promjenu lozinke nekog Linux (Ubuntu) korisnika. Passwd ima na sebi veću težinu prava, pa samim time ukoliko ga korisnik sa manjim pravima pokrene, passwd svoju težinu prenese na proces korisnika pa onda sam korisnik čak i ako nije administrator sustava, može promijeniti vlastitu šifru.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2019.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2019.png)
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2020.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2020.png)
 
 Ukoliko provjerimo određenim naredbama za izlistavanje, možemo vidjeti kako id procesa korisnika prividno odgovoara id-u passwd procesa pa samim time korisnik može koristiti tu naredbu bez obzira bila ona na višem ili nižem levelu kontrole.
 
