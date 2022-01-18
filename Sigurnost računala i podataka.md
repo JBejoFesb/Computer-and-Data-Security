@@ -14,7 +14,7 @@ Napadač se konstantnim slanjem ARP replayeva predstavlja IP-em druge žrtve te 
 Preusmjerivač ne zna kome pripada prava adresa te raspoznaje korisnike samo preko MAC adresi.
 Tako napadač makar ima IP adresu druge žrtve i dalje prima podatke preko svoje MAC adrese.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled.png)
 
 Nakon početnog preuzimanja kontenjera koristeći assete sa profesorovog github repositorija-a započinjemo vježbu lansiranjem 3 kontenjera i namještanjem njihovih konfiguracija.
 
@@ -45,7 +45,7 @@ docker exec -it evil-station bash
 
 Spajanje dvije žrtve preko netcat servisa i test slanja u oba smjera:
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%201.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%201.png)
 
 ```c
 Korištene su naredbe:
@@ -70,7 +70,7 @@ arpspoof -t station-1 station-2
 
 Naredbom tcpdump kreće praćenje prometa žrtvi.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%202.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%202.png)
 
 AR Protokol, odnosnje njegove slabosti mogu se koristiti i za napad na dostupnost korisnikovih podataka. 
 Denial of service ili reduction of service napadi izvode se gušenjem prometa jedne od žrtviju floodanjem te žrtve sa arp replayevima.
@@ -94,7 +94,7 @@ Ispravan ključ za dekripciju pronalazimo brute-force napadamo te koristimo apli
 
 Rad jezgri može se provjeriti preko task managera, gdje smo pri kraju vježbe utvrdili ispravnost koda i njegovo korištenje resursa (laptop u laboratoriju sadrži i5 7500u čiji je thread bio na 50% iskorištenosti pri rješavanju 20-bitne entropije).
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%203.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%203.png)
 
 Program korišten za napad zasniva se na python jeziku i beskonačnom while loop-u koji uspoređuje dekriptirani plaintext sa zaglavljem datoteke u kojoj se nalaze informacije o samoj datoteci kao njezin tip (u ovom slučaju png).
 
@@ -192,7 +192,7 @@ if __name__ == "__main__":
 
 Entropija od 20 bita probijena je u približno minutu. Ključ statistički nalazimo na otprilike pola mogućeg keyspace-a. 
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%204.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%204.png)
 
 Kada bi pokušali entropiju od 22 bita gurati na jednoj jezgri trajalo bi puno duže i stoga koristimo više-jezgreni program.
 
@@ -286,7 +286,7 @@ if __name__ == "__main__":
 
 **Output u CMD-u**
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%205.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%205.png)
 
 Proces generiranja i provjere ključa može se izvesti i korištenjem textualnih datoteka koje možemo pročitati. U ovom primjeru MAC spremamo u datoteka.sig (signature).
 
@@ -381,7 +381,7 @@ Usporedba se ne smije vršiti na standardni način već se koristi naredba "h.ve
 Na kraju te poruke treba rasporediti po timestampu i dobit ćemo ispravan savjet za kupnju ili prodaju dionica.
 **Primjer .txt i .sig datoteka**
 
-[challenges.zip](Sigurnost%20rac%CC%8Cunala%20i%20podataka/challenges.zip)
+[challenges.zip](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/challenges.zip)
 
 **Kod za challange**
 
@@ -485,7 +485,7 @@ if __name__ == "__main__":
 
 **Rezultat u CMD-u:**
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%206.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%206.png)
 
 # **Lab 4: Password-hashing (iterative hashing, salt, memory-hard functions)**
 
@@ -675,7 +675,7 @@ if __name__ == "__main__":
 
 ```
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%207.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%207.png)
 
 Vidimo iz primjera da korištenjem različitih funkcija imamo različit kompromis između sigurnosti i brzine. 
 
@@ -697,7 +697,7 @@ U offline napadu pokušavamo probiti autentikaciju tako da napadamo lokalno spre
 
 U svrhu online napada koristimo Nmap alat za pretraživanje mreža kako bi uspostavili na kojem portu i preko kojeg protokola je uspostavljen Secure Shell sustav. 
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%208.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%208.png)
 
 Naravno bez da znamo šifru ne možemo ući u SSH pa s toga koristimo alat Hydra kako bi iz pre-compiled dictionarya pokušali pogodoiti šifru. Ovo je u suštini brute force napad pa više računalne snage daje bolje rezultate.
 
@@ -707,28 +707,235 @@ Parametar -t određuje thredove na kojima će se proces izvoditi, ukoliko za par
 
 Hydra dobija dopuštenje od OS-a da iskoristi 4 niti procesora. Kako je na laptopima u labosu procesor starije klase, očekivano, Hydra gotovo u potpunosti koristi njegove resurse, a pritom koristi i određenu količinu memorije.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%209.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%209.png)
 
 Broj mogućih šifri iz rječnika je ogroman, pa ćak i sa 4 threada ovdje govorimo o dužem vremenu napada. Stoga koristimo manji rječnik u kojemu je namjerno postavljena naša šifra.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2010.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2010.png)
 
 Nakon 15 minuta šifra biva pronađena i možemo se uspješno ulogirati u SSH.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2011.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2011.png)
 
 ---
 
 Offline napad izvodimo korištenjem offline dictionarya i alata HashCat koji na temelju lokalno spremljenih hasheva radi usporedbe i time “crackira šifru”.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2012.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2012.png)
 
 Ovisno o entropiji hash se može naći na svega nekoliko posto kao kod kolegice Bartulović, ali može i potrajati. Prosječno vrijeme je 50%, a u mom slučaju HashCat je prošao oko 40% dictionarya.
 
 Aplikacija nas uredno obavijesti da je lozinka cracked te je možemo testirati.
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2013.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2013.png)
 
 U ovom slučaju lozinka je jednaka kao kod online napada te pri upisu u SSH uredno prolazi autentikaciju. Napadač sada može pristupiti SSH sustavu. 
 
-![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka/Untitled%2014.png)
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2014.png)
+
+---
+
+---
+
+---
+
+# **Lab 6: Linux permissions and ACLs**
+
+---
+
+U zadnjoj vježbi obrađujemo kontrolu pristupa (eng. access control).
+
+Kontrola pristupa je koncept čije izvedbe nalazimo u svim modernim operacijskim sustavima. Riječ je o sustavu koji se brine o pravima i radnjama koje su dopuštene/dane ili zabranjene nekom korisniku. Također brine i za radnje koje su dopuštene nad nekom datotekom ili mapom.
+
+Kontrolu pristupa možemo određivati nad korisnikom, ili nad objektom. Objekt je najčešće datoteka, a u matrici kontrole pristupa korisnika nazivamo i procesom.
+
+---
+
+Matrica kontrole pristupa je dobar koncept, ali ima problema kada ju se prenese direktno kao takvu u računala. Tada dobijamo prazna polja i neiskorištenu memoriju.
+
+Taj problem se riješava tako da koristimo ***Access Control Lists.***
+
+Lista kontrole pristupa je ***linked-list*** kojeg možemo vezati za korisnika ili za objekt.
+
+Ukoliko je vežemo za objekt, id svakog node-a u listi će biti korisnik. Ako je vežemo za korisnika, svaki node predstavlja drugi objekt/resurs.
+
+---
+
+Prvi zadatak u vježbi bio je napraviti novi korisnički račun (Alice) te unutar određene mape stvoriti datoteku security.txt koja će se koristiti kao objekt nad kojim upravljamo pristupom
+
+```bash
+student@DESKTOP-7Q0BASR:/mnt/c/Users/A507$ id
+uid=1000(student) gid=1000(student) groups=1000(student),4(adm),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plugdev),114(netdev),1001(docker)
+
+student@DESKTOP-7Q0BASR:/mnt/c/Users/A507$ adduser alice
+adduser: Only root may add a user or group to the system.
+
+student@DESKTOP-7Q0BASR:/mnt/c/Users/A507$ sudo adduser alice
+[sudo] password for student:
+Adding user `alice' ...
+Adding new group `alice' (1002) ...
+Adding new user `alice' (1001) with group `alice' ...
+Creating home directory `/home/alice' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Changing the user information for alice
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] y
+
+student@DESKTOP-7Q0BASR:/mnt/c/Users/A507$ su - alice
+Password:
+alice@DESKTOP-7Q0BASR:~$ id
+uid=1001(alice) gid=1002(alice) groups=1002(alice)
+alice@DESKTOP-7Q0BASR:~$
+```
+
+Potrebno je dodati još jednog korisnika (Bob) kako bi testirali različite levele pristupa.
+
+```python
+student@DESKTOP-7Q0BASR:/mnt/c/Users/A507$ sudo adduser bob
+Adding user `bob' ...
+Adding new group `bob' (1003) ...
+Adding new user `bob' (1002) with group `bob' ...
+Creating home directory `/home/bob' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Changing the user information for bob
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n]
+
+student@DESKTOP-7Q0BASR:/mnt/c/Users/A507$ su - bob
+Password:
+bob@DESKTOP-7Q0BASR:~$ id
+uid=1002(bob) gid=1003(bob) groups=1003(bob)
+```
+
+Slijedi kreiranje datoteke security.txt. Odmah provjeravamo i kontrolu koja je dana nad tim objektom.
+
+```python
+alice@DESKTOP-7Q0BASR:~$ mkdir SRP
+alice@DESKTOP-7Q0BASR:~$ cd SRP
+alice@DESKTOP-7Q0BASR:~/SRP$  echo "Hello World" > security.txt
+alice@DESKTOP-7Q0BASR:~/SRP$ ll
+total 12
+drwxrwxr-x 2 alice alice 4096 Jan 10 13:18 ./
+drwxr-xr-x 5 alice alice 4096 Jan 10 13:17 ../
+-rw-rw-r-- 1 alice alice   12 Jan 10 13:18 security.txt
+alice@DESKTOP-7Q0BASR:~/SRP$ ls -l
+total 4
+-rw-rw-r-- 1 alice alice 12 Jan 10 13:18 security.txt
+alice@DESKTOP-7Q0BASR:~/SRP$ cd ..
+alice@DESKTOP-7Q0BASR:~$ ls -l
+total 4
+drwxrwxr-x 2 alice alice 4096 Jan 10 13:18 SRP
+alice@DESKTOP-7Q0BASR:~$
+```
+
+Provjeravamo ispisivanje datoteke i pristup pomoću cat i chmod naredbi.
+
+Chmod služi za promjenu kontrole pristupa nekom objektu.
+
+U ovom dijelu vježbe također testiramo mogućnost pristupa datoteci ukoliko smo van mape u kojoj se datoteka nalazi.
+
+Da bi čitali content neke mape, potrebno je imati pravo execute nad tom mapom. Skraćenica u naredbi chmod je -x.
+
+```python
+alice@DESKTOP-7Q0BASR:~/SRP$ cat security.txt
+Hello World
+alice@DESKTOP-7Q0BASR:~/SRP$ chmod u-r security.txt
+alice@DESKTOP-7Q0BASR:~/SRP$ cat security.txt
+cat: security.txt: Permission denied
+
+alice@DESKTOP-7Q0BASR:~/SRP$ chmod u+r security.txt
+alice@DESKTOP-7Q0BASR:~/SRP$ cat security.txt
+Hello World
+
+alice@DESKTOP-7Q0BASR:~/SRP$ chmod u+r security.txt
+alice@DESKTOP-7Q0BASR:~/SRP$ cat security.txt
+Hello World
+
+alice@DESKTOP-7Q0BASR:~/SRP$ cd ..
+alice@DESKTOP-7Q0BASR:~$
+alice@DESKTOP-7Q0BASR:~$ chmod u-x srp
+chmod: cannot access 'srp': No such file or directory
+alice@DESKTOP-7Q0BASR:~$ chmod u-x SRP
+alice@DESKTOP-7Q0BASR:~$ ls -l
+total 4
+drw-rwxr-x 2 alice alice 4096 Jan 10 13:18 SRP
+alice@DESKTOP-7Q0BASR:~$ cat SRP/security.txt
+cat: SRP/security.txt: Permission denied
+
+```
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2015.png)
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2016.png)
+
+Naredbom ***usermod*** dodajemo Boba u grupu Alice, pa on samim time ima jednaka prava.
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2017.png)
+
+---
+
+Sljedeći dio vježbe odnosi se na kontrolu pristupa korištenjem naredbi ***getfacl*** i ***setfacl***. Tim naredbama pokušavamo dati prava Bob-u kojeg naknadno dodajemo u grupe kako bi imali lakši pristup datotekama.
+
+```bash
+bob@DESKTOP-7Q0BASR:~$ cat /etc/shadow
+cat: /etc/shadow: Permission denied
+bob@DESKTOP-7Q0BASR:~$ ls -l
+total 0
+bob@DESKTOP-7Q0BASR:~$ cd etc
+-su: cd: etc: No such file or directory
+bob@DESKTOP-7Q0BASR:~$ getfacl /etc/shadow
+getfacl: Removing leading '/' from absolute path names
+# file: etc/shadow
+# owner: root
+# group: shadow
+user::rw-
+group::r--
+other::---
+
+student@DESKTOP-7Q0BASR:~$ python3 lab6.py
+Real (R), effective (E) and saved (S) UIDs: (1000, 1000, 1000)
+
+Traceback (most recent call last):
+  File "lab6.py", line 5, in <module>
+    with open('/home/alice/SRP/security.txt', 'r') as f:
+PermissionError: [Errno 13] Permission denied: '/home/alice/SRP/security.txt'
+
+```
+
+Grupa je “vrsta” korisnika. To je uloga korisnika u sustavu koja se jednostavno može maknuti ili staviti bilo kojem korisniku. Prava i kontrola koju taj korisnik tada dobije vezana je specifično uz njegovu ulogu, a ne njega samoga. 
+
+Windowsi imaju jako sličan pristup sa svojim administrator i standard user ulogama.
+
+Prije zadnjeg dijela vježbe Bob-a uklanjamo iz svih grupa i ostaje bez prava i kontrole.
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2018.png)
+
+---
+
+Posljednji dio vježbe odnosi se na naredbu passwd za promjenu lozinke nekog Linux (Ubuntu) korisnika. Passwd ima na sebi veću težinu prava, pa samim time ukoliko ga korisnik sa manjim pravima pokrene, passwd svoju težinu prenese na proces korisnika pa onda sam korisnik čak i ako nije administrator sustava, može promijeniti vlastitu šifru.
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2019.png)
+
+![Untitled](Sigurnost%20rac%CC%8Cunala%20i%20podataka%20cf05a4c0356347b09ec176f528693f45/Untitled%2020.png)
+
+Ukoliko provjerimo određenim naredbama za izlistavanje, možemo vidjeti kako id procesa korisnika prividno odgovoara id-u passwd procesa pa samim time korisnik može koristiti tu naredbu bez obzira bila ona na višem ili nižem levelu kontrole.
+
+---
+
+***The End***
